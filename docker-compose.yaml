@@ -1,0 +1,11 @@
+services:
+  snakemake:
+    image: snakemake/snakemake@sha256:b41b437cd6a10d5aaa560fa603b595fe21d800af90fbdfbf27721dfb7c98c617
+    working_dir: /workspace/workflow
+    volumes:
+      - ./:/workspace
+      - ~/.conda:/root/.conda
+    tty: true
+    stdin_open: true
+    command: bash -c "conda config --set channel_priority strict && bash"
+
