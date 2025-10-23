@@ -1,6 +1,6 @@
 # 🧬 Snakemake Training
 
-> A minimal and reproducible training environment for learning **Snakemake** workflow management with **Conda** and **Docker Compose**.
+A fully reproducible, containerized environment for learning and testing Snakemake workflows — built with Conda (libmamba) and Docker Compose. Designed for both beginners and workflow developers who want to explore reproducible bioinformatics pipelines in an isolated, consistent setup.
 
 ---
 
@@ -37,6 +37,9 @@ Execute inside the container:
 
 ```bash
 snakemake --use-conda -j 8
+
+# run with report
+snakemake --use-conda -j 8 --report results/pipeline_report.html --report-after-run
 ```
 
 Snakemake will automatically:
@@ -74,6 +77,8 @@ This ensures reproducibility and compatibility across machines.
 ## 📁 Project Structure
 
 ```
+docker-compose.yaml
+docs/
 workflow/
 ├── Snakefile
 ├── rules/
@@ -82,35 +87,9 @@ workflow/
 │   └── multiqc.smk
 ├── envs/
 │   └── main.yaml
+├── data/
+├── report/
+├── results/
 └── config/
     └── sample.csv
 ```
-
----
-
-## 🧪 Useful Commands
-
-Re-run only specific rules:
-
-```bash
-snakemake -R fastp --use-conda -j 4
-```
-
-Clean up intermediate files:
-
-```bash
-snakemake --delete-temp-output
-```
-
-Force rebuild of all conda environments:
-
-```bash
-rm -rf .snakemake/conda/*
-snakemake --use-conda -j 8
-```
-
----
-
-## 🧾 License
-
-MIT License — feel free to use, modify, and share.

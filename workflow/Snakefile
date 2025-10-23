@@ -17,6 +17,7 @@ with open("config/sample.csv") as f:
 include: "rules/fastp.smk"
 include: "rules/fastqc.smk"
 include: "rules/multiqc.smk"
+include: "rules/finish.smk"
 
 rule all:
     input:
@@ -28,4 +29,5 @@ rule all:
         expand("results/fastqc/{sample}_R1_fastqc.html", sample=SAMPLES.keys()),
         expand("results/fastqc/{sample}_R2_fastqc.html", sample=SAMPLES.keys()),
         # MultiQC final report
-        "results/multiqc/multiqc_report.html"
+        "results/multiqc/multiqc_report.html",
+        "results/finish.txt"
