@@ -1,0 +1,29 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: snakemake/snakemake@sha256:b41b437cd6a10d5aaa560fa603b595fe21d800af90fbdfbf27721dfb7c98c617
+      options: --user root 
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Snakemake dry-run
+        run: |
+          cd workflow
+          snakemake -np --use-conda
+
+      - name: Run Snakemake with test data
+        run: |
+          cd workflow
+          snakemake --cores 2 \
+            --use-conda --show-failed-logs
