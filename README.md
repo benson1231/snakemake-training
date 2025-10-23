@@ -1,5 +1,8 @@
 # 🧬 Snakemake Training
 
+[![Docker Engine](https://img.shields.io/badge/Docker-27.5.1-blue?logo=docker)](https://www.docker.com/get-started/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
+
 A fully reproducible, containerized environment for learning and testing Snakemake workflows — built with Conda (libmamba) and Docker Compose. Designed for both beginners and workflow developers who want to explore reproducible bioinformatics pipelines in an isolated, consistent setup.
 
 ---
